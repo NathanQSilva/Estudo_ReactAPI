@@ -1,0 +1,1 @@
+{"ast":null,"code":"function App() {}\n\nexport default App;","map":{"version":3,"sources":["/home/nathan-silva/Documentos/Repositorios/Estudo_ReactAPI/zabbixapi/src/pages/_app.jsx"],"names":["App"],"mappings":"AAAA,SAASA,GAAT,GAAe,CAEd;;AAED,eAAeA,GAAf","sourcesContent":["function App() {\n\n}\n\nexport default App;"]},"metadata":{},"sourceType":"module"}
