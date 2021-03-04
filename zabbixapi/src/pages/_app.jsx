@@ -1,42 +1,37 @@
-function App() {
+import react from 'react';
+import axios from 'axios';
 
-    const URL_TO_FETCH = 'https://zabbix.plss.com.br/api_jsonrpc.php';
-        fetch(URL_TO_FETCH, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/jsonrequest'
-            },
-            body: JSON.stringify({
-                "jsonrpc": "2.0",
-                "method": "user.login",
-                "params": {
-                    "user": "nathan.quadros",
-                    "password": "S3c77$1Nfr488"
-                },
-                "id": 1,
-                "auth": null
-            })            
-        })
-        .then(response => response.json())
-        .then(result => {
-            console.log(result);
-        })
-        //.then(function(response) {
-        //    response.text()
-        //    .then(function(result){
-        //        console.log('teste', result);
-        //    })
-        //})
-        .catch(function(err){
-            console.error('Failed retriving information', err); 
-        });
-    
+function getKey() {
+
+    const apiData = JSON.stringify({
+        "jsonrpc": "2.0",
+        "method": "user.login",
+        "params": {
+            "user": 'nathan.quadros',
+            "password": 'S3c77$1Nfr488'
+        },
+        "id": 1,
+        "auth": null
+    });
+
+    const apiUrl = 'https://zabbix.plss.com.br/api_jsonrpc.php';
+ 
+    axios.post(apiUrl, apiData, {
+        headers: {
+            'Content-Type': 'application/json-rpc'
+        }
+    })
+    .then((response) => {
+        console.log(response.data);
+        console.log(response.status);
+        console.log(response.data.result)
+    });
 
     return (
         <div>
-            <h1></h1>
+            <h1>teste</h1>
         </div>
     )
 }
 
-export default App;
+export default getKey;

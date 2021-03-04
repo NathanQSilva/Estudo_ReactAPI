@@ -1,0 +1,16 @@
+import React from 'react';
+import axios from 'axios';
+
+export default function Login() {
+    const [data, getData] = useStates('');
+
+    const url = 'hrrps://zabbix.plss.com.br/api.jsonrpc.php';
+
+    const getData = () => {
+        axios.get(url)
+        .then((response) => {
+            const allData = response.data;
+        })
+        .catch(error => console.error(`Error: ${error}`));
+    }
+}
