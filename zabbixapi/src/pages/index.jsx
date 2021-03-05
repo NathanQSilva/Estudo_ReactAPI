@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import App from './_app'
+import indexPage from './_app'
 
 export default function Home() {
   return (
-    <getKey />
+    <indexPage />
   )
 }

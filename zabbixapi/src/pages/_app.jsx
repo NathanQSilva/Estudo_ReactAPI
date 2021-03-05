@@ -1,37 +1,29 @@
-import react from 'react';
-import axios from 'axios';
+import React from 'react';
+import api from './api/api';
 
-function getKey() {
+const indexPage = () => {
+    let [responseData, setResponseData] = React.useState('')
 
-    const apiData = JSON.stringify({
-        "jsonrpc": "2.0",
-        "method": "user.login",
-        "params": {
-            "user": 'nathan.quadros',
-            "password": 'S3c77$1Nfr488'
-        },
-        "id": 1,
-        "auth": null
-    });
+    const fetchData = (a) => {
+        a.preventDefault()
 
-    const apiUrl = 'https://zabbix.plss.com.br/api_jsonrpc.php';
- 
-    axios.post(apiUrl, apiData, {
-        headers: {
-            'Content-Type': 'application/json-rpc'
-        }
-    })
-    .then((response) => {
-        console.log(response.data);
-        console.log(response.status);
-        console.log(response.data.result)
-    });
+        api.getData()
+        .then((response) => {
+            setResponseData(response.data)
+            console.log(response)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
 
     return (
         <div>
-            <h1>teste</h1>
+            <h1>{responseData.title}</h1>
+            <button onClick={(a) => fetchData(a)} type='button'>Click Me For Data</button>
+            <p>{ responseData.result }</p>
         </div>
     )
 }
 
-export default getKey;
+export default indexPage
